@@ -8,6 +8,7 @@ from redis.asyncio import Redis
 from starlette import status
 from starlette.middleware.cors import CORSMiddleware
 
+
 from service import redis_storage
 from service.cache import Cache
 

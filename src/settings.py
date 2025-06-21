@@ -29,6 +29,13 @@ class Settings(BaseSettings):
     POSTGRES_DB: str = "homes_db0"
     SQLALCHEMY_DATABASE_URI: str = None
 
+    # ===  AUTH Telegram Bot ===
+    AUTH_BOT_TOKEN: str = "AuthTelegramBotToken"
+    URL_HOME_SERVICE: str = "http://localhost:9000"
+
+    # === NOTIFY Telegram Bot ===
+    NOTIFY_BOT_TOKEN: str = "NotifyTelegramBotToken"
+
     @model_validator(mode='before')
     @classmethod
     def get_sqlalchemy_database_uri(cls, data: dict | Any) -> dict | Any:
