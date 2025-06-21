@@ -8,7 +8,7 @@ from redis.asyncio import Redis
 from starlette import status
 from starlette.middleware.cors import CORSMiddleware
 
-from service.exc import *
+
 from service import redis_storage
 from service.cache import Cache
 
@@ -56,6 +56,10 @@ app = FastAPI(
     lifespan=lifespan,
     docs_url=f"{settings.SERVICE_PREFIX}/docs",
     openapi_url=f"{settings.SERVICE_PREFIX}/openapi.json",
+    summary="""
+    Сервис для управления и оперативного решения бытовых проблем 
+    в ЖК через заявки на веб платформу и телеграмм бота.
+    """
 
 )
 
@@ -64,15 +68,6 @@ for router in all_routers:
 
 
 app.add_middleware(CORSMiddleware, **middleware_kwargs)
-
-# === РЕГИСТРАЦИЯ ИСКЛЮЧЕНИЙ === #
-app.add_exception_handler(NotFoundError, not_found_404)
-app.add_exception_handler(BadRequestError, bad_request_400)
-app.add_exception_handler(ExistDataError, bad_request_400)
-app.add_exception_handler(PermissionDeniedError, forbidden_403)
-app.add_exception_handler(AuthorizationError, unauthorized_401)
-app.add_exception_handler(Exception, exception_500)
-
 
 
 @app.middleware("http")
