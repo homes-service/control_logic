@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  postgres-fastapi:
+    image: postgres:16
+    container_name: homes_service
+    ports:
+      - "5430:5432"
+    environment:
+      POSTGRES_USER: home_user
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: home_db
+    restart: always

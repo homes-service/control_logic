@@ -2,6 +2,16 @@
 __pycache__/
 *.py[cod]
 *$py.class
+poetry.lock
+
+/.env
+**/.idea
+**/__pycache__
+src/.env
+
+
+/src/service/portfolio/data/*
+/src/tests/unittests/portfolio/data/*
 
 # C extensions
 *.so
