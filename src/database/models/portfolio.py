@@ -5,8 +5,6 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from database import Base, uuid_pk, datetime_create, price, datetime_update, str_50, str_255
-from .enums.type import BalanceOperationType, Currency
-from schemas.portfolio import PortfolioSchema
 
 class PortfolioModel(Base):
     __tablename__ = "portfolio"
@@ -21,6 +19,3 @@ class PortfolioModel(Base):
 
     # ForeignKey
     account: Mapped[list["AccountModel"]] = relationship(back_populates="portfolio")
-
-    def to_read_model(self) -> PortfolioSchema:
-        return PortfolioSchema.from_orm(self)
