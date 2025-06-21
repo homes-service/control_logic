@@ -6,9 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from database import Base, uuid_pk, datetime_create, price, datetime_update, str_50, str_255
 from .enums.type import BalanceOperationType, Currency
-from schemas.account import AccountSchema
-from schemas.account_balance import AccountBalanceSchema
-from schemas.balance_history import BalanceHistorySchema
+
 
 class AccountBalanceModel(Base):
     __tablename__ = "account_balance"
@@ -30,8 +28,6 @@ class AccountBalanceModel(Base):
         back_populates="account_balance"
     )
 
-    def to_read_model(self) -> AccountBalanceSchema:
-        return AccountBalanceSchema.model_validate(self)
 
 class AccountModel(Base):
     __tablename__ = "account"
@@ -63,8 +59,6 @@ class AccountModel(Base):
         back_populates="account"
     )
 
-    def to_read_model(self) -> AccountSchema:
-        return AccountSchema.from_orm(self)
 
 class BalanceHistoryModel(Base):
     __tablename__ = "balance_history"
@@ -86,6 +80,3 @@ class BalanceHistoryModel(Base):
     account_balance: Mapped["AccountBalanceModel"] = relationship(
         back_populates="history"
     )
-
-    def to_read_model(self) -> BalanceHistorySchema:
-        return BalanceHistorySchema.model_validate(self)
