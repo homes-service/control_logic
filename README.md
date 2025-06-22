@@ -35,26 +35,6 @@ cd ~/control_logic/src
 sudo docker-compose up -d
 ```
 ### 4. Поднять Redis в Docker:
-- Создаем файл в src и называем его docker-compose-redis.yml
-- Содержимое файла:
-```commandline
-version: '3.8'
-
-services:
-  redis:
-    image: redis:latest          # Официальный образ Redis
-    container_name: redis        # Имя контейнера
-    restart: unless-stopped      # Перезапуск при остановке (кроме ручного)
-    ports:
-      - "6379:6379"              # Порт Redis (6379) пробрасывается на хост
-    volumes:
-      - redis_data:/data         # Сохранение данных на хосте
-
-volumes:
-  redis_data:        
-```
-
-- Выполняем команду:
 ```commandline
 docker-compose -f docker-compose-redis.yml up -d
 ```
