@@ -36,7 +36,7 @@ sudo docker-compose up -d
 ```
 ### 4. Поднять Redis в Docker:
 ```commandline
-sudo docker run --rm --name redis_portfolio -d -p 6379:6379
+docker-compose -f docker-compose-redis.yml up -d
 ```
 
 ### 5. Миграции:

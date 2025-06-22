@@ -5,12 +5,12 @@ from typing import List
 from fastapi import APIRouter, HTTPException
 from fastapi import status
 
-from src.api.dependencies import UOWDep
-from src.schemas.instrument_groups import InstrumentGroupsSchemaAdd, \
+from api.dependencies import UOWDep
+from schemas.instrument_groups import InstrumentGroupsSchemaAdd, \
     InstrumentGroupSchemaUpdate, InstrumentGroupsSchema, \
     InstrumentGroupsSchemaAddResponse
-from src.service.instrument_groups.instrument_groups import InstrumentGroupsService
-from src.settings import settings
+from service.instrument_groups.instrument_groups import InstrumentGroupsService
+from settings import settings
 
 router = APIRouter(
     prefix=f"{settings.V1}/instrument_groups",
