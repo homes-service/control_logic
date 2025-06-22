@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest          # Официальный образ Redis
+    container_name: redis        # Имя контейнера
+    restart: unless-stopped      # Перезапуск при остановке (кроме ручного)
+    ports:
+      - "6379:6379"              # Порт Redis (6379) пробрасывается на хост
+    volumes:
+      - redis_data:/data         # Сохранение данных на хосте
+
+volumes:
+  redis_data:        
