@@ -50,6 +50,5 @@ class Settings(BaseSettings):
         return data
 
 
-# settings = Settings(_env_file='../.env', _env_file_encoding='utf-8')
-settings = Settings(_env_file='.env', _env_file_encoding='utf-8')
-
+settings = Settings(_env_file='../.env', _env_file_encoding='utf-8')
+# settings = Settings(_env_file='.env', _env_file_encoding='utf-8')
